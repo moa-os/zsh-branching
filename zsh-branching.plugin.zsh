@@ -46,10 +46,12 @@ git_fzf_branch() {
   # 3. Strip leading “* ” or spaces
   # 4. Cut out just the branch name
   branches=$(
-    git branch -vv \
-      | grep origin \
-      | sed 's/^[** ]*//' \
-      | cut -d' ' -f1
+   git branch -vv \
+    | grep origin \
+    | sed -E '
+        s/^\* ([^ ]+).*$/* \1/;
+        s/^  ([^ ]+).*$/  \1/
+      '
   )
 
   [[ -z $branches ]] && echo "No origin-tracking branches." && return
