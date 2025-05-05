@@ -41,9 +41,16 @@ fi
 # Your branch‐helper function
 git_fzf_branch() {
   local branches
-  branches="$(git branch -vv \
-    | grep origin \
-    | awk '{print $1 == "*" ? $2 : $1}')"
+  # 1. List branches with upstream info
+  # 2. Keep only those tracking origin/
+  # 3. Strip leading “* ” or spaces
+  # 4. Cut out just the branch name
+  branches=$(
+    git branch -vv \
+      | grep origin \
+      | sed 's/^[* ]*//' \
+      | cut -d' ' -f1
+  )
 
   [[ -z $branches ]] && echo "No origin-tracking branches." && return
 
@@ -56,6 +63,7 @@ git_fzf_branch() {
     --bind "ctrl-r:execute(git push origin --delete {1} && echo \"Remote-deleted {1}\")+reload(printf '%s\n' $branches)" \
     --bind "esc:abort"
 }
+
 
 # Your existing alias
 alias gbs='git_fzf_branch'
