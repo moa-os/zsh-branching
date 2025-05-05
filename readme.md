@@ -29,7 +29,7 @@ An [Oh My Zsh](https://github.com/ohmyzsh/ohmyzsh) plugin that enhances your Git
 
 ```bash
 # Clone into Oh My Zsh’s custom plugins folder
-git clone https://github.com/youruser/zsh-branching.git \
+git clone https://github.com/moa-os/zsh-branching.git \
   ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-branching
 
 # Enable plugin: add to your ~/.zshrc
