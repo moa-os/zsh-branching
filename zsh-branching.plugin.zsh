@@ -41,7 +41,10 @@ fi
 # Your branch‐helper function
 git_fzf_branch() {
   local branches
-  branches="$(git branch -vv | grep origin | awk '{print $1}')"
+  branches="$(git branch -vv \
+    | grep origin \
+    | awk '{print $1 == "*" ? $2 : $1}')"
+
   [[ -z $branches ]] && echo "No origin-tracking branches." && return
 
   printf '%s\n' $branches | fzf \

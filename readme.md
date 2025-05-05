@@ -1,6 +1,6 @@
 # zsh-branching
 
-An [Oh My Zsh](https://github.com/ohmyzsh/ohmyzsh) plugin that enhances your Git workflow by providing a fuzzy‑finder interface for branch operations. Powered by [fzf](https://github.com/junegunn/fzf), `zsh-branching` lets you quickly switch branches, delete local branches (soft or force), and remove remote branches—all from one intuitive UI.
+An [Oh My Zsh](https://github.com/ohmyzsh/ohmyzsh) plugin that enhances your Git workflow by providing a fuzzy-finder interface for branch operations. Powered by [fzf](https://github.com/junegunn/fzf), `zsh-branching` lets you quickly switch branches, delete local branches (soft or force), remove remote branches, and run common Git commands—all from one intuitive UI.
 
 ## Features
 
@@ -15,6 +15,10 @@ An [Oh My Zsh](https://github.com/ohmyzsh/ohmyzsh) plugin that enhances your Git
   - `Esc` → Quit without action
 
 - **Reloads after delete**: Continue managing branches without restarting the tool.
+- **Convenience aliases**:
+
+  - `gits` → `git status`
+  - `gita` → `git add .`
 
 ## Requirements
 
@@ -29,7 +33,7 @@ An [Oh My Zsh](https://github.com/ohmyzsh/ohmyzsh) plugin that enhances your Git
 
 ```bash
 # Clone into Oh My Zsh’s custom plugins folder
-git clone https://github.com/moa-os/zsh-branching.git \
+git clone https://github.com/youruser/zsh-branching.git \
   ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-branching
 
 # Enable plugin: add to your ~/.zshrc
@@ -51,13 +55,20 @@ gh repo clone youruser/zsh-branching \
 
 ## Usage
 
-Simply run:
+- Run the fuzzy branch selector:
 
-```bash
-gbs
-```
+  ```bash
+  gbs
+  ```
 
-Use the displayed key bindings to switch or delete branches.
+  Use the displayed key bindings to switch or delete branches.
+
+- Run common Git commands:
+
+  ```bash
+  gits  # shows git status
+  gita  # stages all changes (git add .)
+  ```
 
 ## License
 
