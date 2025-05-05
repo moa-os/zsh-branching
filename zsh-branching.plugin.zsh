@@ -48,7 +48,7 @@ git_fzf_branch() {
   branches=$(
     git branch -vv \
       | grep origin \
-      | sed 's/^[* ]*//' \
+      | sed 's/^[** ]*//' \
       | cut -d' ' -f1
   )
 
